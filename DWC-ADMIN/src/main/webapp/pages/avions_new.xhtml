@@ -1,0 +1,53 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:body>
+
+			<h:form id="newForm">
+
+				<p:panel header="Save new aircraft" style="width: 1150px;">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Aircraft code" />
+						<p:inputText value="#{avionMB.imm}" />
+						
+						<p:outputLabel value="Appareil" />
+						<p:inputText value="#{avionMB.appareil}" />
+						
+						<p:outputLabel value="Seats count" />
+						<p:inputText value="#{avionMB.capacite}" />
+						
+						<p:outputLabel value="TU/AFF" />
+						<p:inputText value="#{avionMB.tuaff}" />
+						
+						<p:outputLabel value="Airline name" />
+						<p:inputText value="#{avionMB.nowner}" />
+						
+						<p:outputLabel value="Airline code" />
+						<p:inputText value="#{avionMB.cowner}" />
+						
+						<p:outputLabel value="Type" />
+						<p:inputText value="#{avionMB.type}" />
+						
+						<p:outputLabel value="Entry date" />
+						<p:calendar value="#{avionMB.dentree}" pattern="dd-MM-yyyy" showOn="button" />
+						
+						<p:outputLabel value="Out of service date" />
+						<p:calendar  value="#{avionMB.dsortie}" pattern="dd-MM-yyyy" showOn="button" />
+						
+						<p:commandButton action="#{avionMB.saveNewAvion}" value="Save" />
+					</h:panelGrid>
+				</p:panel>
+
+			</h:form>
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+

@@ -1,0 +1,107 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:body>
+
+			<h:form id="searchForm">
+
+				<p:panel style="width: 1150px;">
+					<h:panelGrid columns="4">
+						<p:commandButton value="New" action="avions_new.xhtml" />
+						<p:commandButton value="Edit" action="avions_edit.xhtml" />
+						<p:commandButton value="Delete" action="#{avionMB.deleteSelectedAvion}"/>
+					</h:panelGrid>
+				</p:panel>
+
+				<p:panel header="Filter aircrafts" style="width: 1150px;">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Aircraft code" />
+						<p:inputText value="#{avionMB.mat_search}" />
+						<p:outputLabel value="Airline name" />
+						<p:inputText value="#{avionMB.airl_search}" />
+						<p:commandButton action="#{avionMB.getAvionList}" value="Search" />
+					</h:panelGrid>
+				</p:panel>
+
+				<p:panel header="Aircraft list" style="width: 1150px;">
+					<h:panelGrid columns="1">
+
+						<p:dataTable value="#{avionMB.avionList}" var="a" selection="#{avionMB.selectedAvion}" rowKey="#{a.imm}"
+							styleClass="avions-table" headerClass="avions-table-header"
+							rowClasses="avions-table-odd-row,avions-table-even-row">
+
+							<p:column selectionMode="single" style="width:16px;text-align:center" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Aircraft code" />
+								</f:facet>
+								<h:outputText value="#{a.imm}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Airline name" />
+								</f:facet>
+								<h:outputText value="#{a.nowner}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Airline code" />
+								</f:facet>
+								<h:outputText value="#{a.cowner}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="TU/AFF" />
+								</f:facet>
+								<h:outputText value="#{a.tuaff}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Seats count" />
+								</f:facet>
+								<h:outputText value="#{a.capacite}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Type" />
+								</f:facet>
+								<h:outputText value="#{a.type}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Entry date" />
+								</f:facet>
+								<h:outputText value="#{a.dentree}"></h:outputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Out of service date" />
+								</f:facet>
+								<h:outputText value="#{a.dsortie}"></h:outputText>
+							</p:column>
+
+						</p:dataTable>
+
+					</h:panelGrid>
+				</p:panel>
+
+			</h:form>
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+
